@@ -181,4 +181,29 @@ if args.save:
     
 ##############################################
 
+import matplotlib.pyplot as plt
+import numpy as np
+
+# 随机选择几个测试样本进行展示
+sample_indices = np.random.choice(len(x_test), 5, replace=False)
+sample_images = x_test[sample_indices]
+sample_labels = y_test[sample_indices]
+
+# 获取这些样本的预测结果
+pred_probs = sess.run(predict, feed_dict={
+    X: sample_images,
+    dropout_rate: 0.0,
+    lr: 0.0,
+    batch_size: len(sample_images)
+})
+pred_labels = np.argmax(pred_probs, axis=1)
+true_labels = np.argmax(sample_labels, axis=1)
+
+for i in range(len(sample_images)):
+    plt.imshow(sample_images[i].reshape(28, 28), cmap='gray')
+    plt.title("True: {}, Pred: {}".format(true_labels[i], pred_labels[i]))
+    plt.axis('off')
+    plt.show()
+
+
 
