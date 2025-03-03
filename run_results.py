@@ -39,7 +39,7 @@ def run_command(param):
             param['init']
             )
              
-    cmd = "python36 %s --gpu %d --epochs %d --batch_size %d --lr %f --eps %f --act %s --bias %f --dropout %f --dfa %d --sparse %d --rank %d --init %s --save %d --name %s" % (
+    cmd = "python %s --gpu %d --epochs %d --batch_size %d --lr %f --eps %f --act %s --bias %f --dropout %f --dfa %d --sparse %d --rank %d --init %s --save %d --name %s" % (
            param['benchmark'], 
            gpu, 
            param['epochs'], 
